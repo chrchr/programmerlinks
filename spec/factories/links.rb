@@ -1,9 +1,11 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :link do
-    name "MyString"
-    url "MyString"
-    username "MyString"
+    name "The name for a link"
+    sequence(:url) {|n|  "http://example.com/%d.html" % n}
+    sequence(:username) {|n| "user_%d" % n}
+
+    factory :invalid_link do
+      name nil
+    end
   end
 end
