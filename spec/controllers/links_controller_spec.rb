@@ -18,12 +18,12 @@ describe LinksController do
   describe "GET show" do
     it "assigns the requested link as @link" do
       link = create(:link)
-      get :show, {:id => link.to_param}
+      get :show, id: link.to_param
       expect(assigns(:link)).to eq link
     end
 
     it "renders to the show template" do
-      get :show, {:id => create(:link)}
+      get :show, id: create(:link).to_param
       expect(response).to render_template :show
     end
   end
@@ -51,6 +51,12 @@ describe LinksController do
         post :create, link: FactoryGirl.attributes_for(:link)
         expect(response).to redirect_to root_url
       end
+
+      it "defaults to zero points" do
+        link_attributes = FactoryGirl.attributes_for(:link)
+        post :create, link: link_attributes
+        expect(Link.where(url: link_attributes[:url]).first.points).to eq 0
+      end
     end
 
     describe "with invalid params" do
@@ -63,6 +69,19 @@ describe LinksController do
         post :create, link: FactoryGirl.attributes_for(:invalid_link)
         expect(response).to render_template "new"
       end
+    end
+  end
+
+  describe "POST upvote" do
+    it "increments the points" do
+      link = create(:link)
+      post :upvote, id: link.to_param
+      expect(link.reload.points).to eq 1
+    end
+
+    it "renders the upvote partial" do
+      post :upvote, id: create(:link).to_param
+      expect(response).to render_template "upvote"
     end
   end
 end

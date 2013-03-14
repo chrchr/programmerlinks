@@ -16,4 +16,14 @@ describe Link do
   it "is invalid without a username" do
     expect(build(:link, username: nil)).to have(1).errors_on(:username)
   end
+
+  it "defaults to zero points" do
+    expect(build(:link).points).to eq 0
+  end
+
+  it "gains a point when it is upvoted" do
+    link = build(:link)
+    link.upvote
+    expect(link.points).to eq 1
+  end
 end
