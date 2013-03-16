@@ -1,8 +1,12 @@
-%div
-  =(link_counter + 1).to_s + '. '
-  - image = image_tag("upvote.gif", id: "upvote_%s" % link.to_param)
-  = link_to image, {action: "upvote", id: link.to_param, remote: true}, "data-link-id" => link.to_param
-  %a{href: link.url}= link.name
-  %span{id: "points_for_%d" % link.to_param}
-    = render partial: "upvote", object: link
-  =" by " + link.username
+- image = image_tag("upvote.gif", id: "upvote_%s" % link.to_param)
+= link_to image, {action: "upvote", id: link.to_param, remote: true}, :method => :post, "data-link-id" => link.to_param
+%a{href: link.url}= link.name
+%span{id: "points_for_%d" % link.to_param}
+  = render partial: "upvote", object: link
+=" by " + link.username
+= distance_of_time_in_words_to_now(link.created_at) + " ago"
+|
+= link_to pluralize(link.comments.size, "comment"), link
+
+
+

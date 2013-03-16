@@ -1,6 +1,10 @@
 Programmerlinks::Application.routes.draw do
-  resources :links
-  match 'links/:id/upvote' => 'links#upvote', as: :upvote
+  resources :links, only: [:index, :show, :new, :create] do
+    resources :comments, only: [:create]
+  end
+
+  match 'links/:id/upvote' => 'links#upvote', as: :upvote, via: [:post]
+
   root to: "links#index"
 
   # The priority is based upon order of creation:

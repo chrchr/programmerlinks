@@ -1,4 +1,4 @@
 %h1 Listing links
 
 %div
- = render @links
+ = render partial: "numbered_link", collection: @links, as: :link

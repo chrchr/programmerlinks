@@ -1,0 +1,6 @@
+#comment_header
+  = comment.username
+  = distance_of_time_in_words_to_now(comment.created_at) + " ago"
+
+#comment_body
+  = comment.comment
