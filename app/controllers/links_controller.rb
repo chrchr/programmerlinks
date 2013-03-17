@@ -12,6 +12,7 @@ class LinksController < ApplicationController
   # GET /links/1
   def show
     @link = Link.find(params[:id])
+    @page_title = @link.name
     @comment = Comment.new
   end
 
@@ -31,7 +32,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     @link.upvote
     if @link.save
-      render partial: "upvote", object: @link
+      render partial: "votes", object: @link
     end
   end
 end

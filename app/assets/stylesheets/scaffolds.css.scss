@@ -3,13 +3,9 @@ body {
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
 }
 
 pre {
@@ -20,18 +16,15 @@ pre {
 
 a {
   color: #000;
+  text-decoration: none;
   &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #000;
   }
 }
 
 div {
   &.field, &.actions {
-    margin-bottom: 10px;
+    margin-bottom: 18px;
   }
 }
 
@@ -39,10 +32,92 @@ div {
   color: green;
 }
 
+#banner {
+  color: #000;
+  background-color: #f60;
+  padding: 0px;
+  height: 24px;
+  position:relative;
+  a:visited {
+    color: #000;
+  }
+}
+
+#main {
+  width: 85%;
+  align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f6f6ef
+}
+
+#submain {
+  padding: 8px;
+}
+
+#comments {
+  margin-left: 16px;
+}
+
+#menu {
+  padding: 0px;
+  position:absolute;
+  margin: 4px;
+}
+
+.link_name {
+  padding-top: 8px;
+  img {
+     float:left;
+     margin-bottom: 1em;
+     margin-right: 5px;
+     margin-top: 3px;
+  }
+}
+
+.link_number {
+  color: #828282;
+  text-align: right;
+  width: 1.5em;
+  height: 2em;
+  display: block;
+  float: left;
+}
+
+.link_metadata {
+  color: #828282;
+  font-size: 9px;
+
+  a:visited {
+    color: #828282;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.logo {
+  border: 1px #ffffff solid;
+  margin: 2px;
+}
+
+.comment_body {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
+}
+
+#comments_form {
+  margin-top: 16px;
+  margin-left: 16px;
+  label {
+    display: block;
+  }
 }
 
 #error_explanation {

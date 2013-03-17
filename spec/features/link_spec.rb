@@ -10,7 +10,7 @@ feature "Posting Links" do
     fill_in "username", with: "A. User"
     click_button "submit"
     expect(current_path).to eq root_path
-    expect(page).to have_content "1. An example link"
+    expect(page).to have_content "1. An example link (example.com)"
     expect(page).to have_content "by A. User"
     expect(find_link('An example link')[:href]).to eq 'http://example.com'
   end

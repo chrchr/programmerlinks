@@ -1,3 +1,5 @@
+require "uri"
+
 class Link < ActiveRecord::Base
   attr_accessible :name, :url, :username
   validates :name, :url, :username,
@@ -7,5 +9,9 @@ class Link < ActiveRecord::Base
 
   def upvote
     self.points += 1
+  end
+
+  def domain
+    URI(url).host
   end
 end

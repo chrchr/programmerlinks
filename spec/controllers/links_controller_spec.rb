@@ -16,22 +16,19 @@ describe LinksController do
   end
 
   describe "GET show" do
-    subject do
-      create(:link)
-    end
-
+    let(:link) { create(:link) }
     it "assigns the requested link as @link" do
-      get :show, id: subject.to_param
-      expect(assigns(:link)).to eq subject
+      get :show, id: link.to_param
+      expect(assigns(:link)).to eq link
     end
 
     it "renders to the show template" do
-      get :show, id: subject
+      get :show, id: link
       expect(response).to render_template :show
     end
 
     it "assings a new @comment for the comments form on the page" do
-      get :show, id: subject
+      get :show, id: link
       expect(assigns(:comment)).to be_a_new Comment
     end
   end
@@ -83,7 +80,9 @@ describe LinksController do
   end
 
   describe "POST upvote" do
+
     let(:link) { create(:link) }
+
     it "increments the points" do
       post :upvote, id: link.to_param
       expect(link.reload.points).to eq 1
@@ -91,7 +90,7 @@ describe LinksController do
 
     it "renders the upvote partial" do
       post :upvote, id: link
-      expect(response).to render_template "upvote"
+      expect(response).to render_template "votes"
     end
   end
 end

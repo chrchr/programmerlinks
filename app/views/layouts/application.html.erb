@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Programmerlinks</title>
+  <title><%= @page_title or "Programmer Links" %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="banner">
-<%= link_to "Programmer Links", root_path %>
-<%= link_to "submit", new_link_path %>
+<div id="main">
+  <%= render "shared/banner" %>
+  <div id="submain">
+    <%= yield %>
+  </div>
 </div>
-
-<%= yield %>
 
 </body>
 </html>

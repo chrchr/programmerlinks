@@ -1,3 +1,4 @@
-%div
-  =(link_counter + 1).to_s + '. '
-  =render link
+.link_name
+  %span.link_number
+    =(numbered_link_counter + 1).to_s + '. '
+  =render numbered_link

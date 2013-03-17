@@ -8,10 +8,10 @@ feature "Voting on links" do
     visit root_path
     expect(current_path).to eq root_path
     expect(page).to have_content("0 points by")
-    find("img").click
+    find("#upvote_%d" % @link.id).click
     expect(current_path).to eq root_path
     expect(page).to have_content("1 point by")
-    find("img").click
+    find("#upvote_%d" % @link.id).click
     expect(page).to have_content("2 points by")
   end
 end

@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe Link do
+
+  let(:link) { create(:link) }
+
   describe "valid link" do
-    subject { create(:link) }
+    subject { link }
 
     it "is valid with a name, url, and username" do
       should be_valid
@@ -24,7 +27,6 @@ describe Link do
   end
 
   describe "points" do
-    let(:link) { build(:link) }
     subject { link.points }
     it "defaults to zero points" do
       should eq 0
@@ -33,6 +35,13 @@ describe Link do
     it "gains a point when it is upvoted" do
       link.upvote
       should eq 1
+    end
+  end
+
+  describe "domain" do
+    subject { link.domain }
+    it "gives the domain of the url" do
+      should eq "example.com"
     end
   end
 end
